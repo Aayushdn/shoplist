@@ -1,20 +1,18 @@
 import "./App.css";
 
-import { createBrowserRouter, Route } from "react-router";
+import { Route, createHashRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
-
-import Item from "./components/Item";
 import AppLayout from "./pages/AppLayout";
-import List from "./components/List";
 import FindProduct from "./components/FindProduct";
 import ProductDataContextProvider from "./contexts/ProductDataContextProvider";
+import HomePage from "./components/HomePage";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     Component: AppLayout,
     children: [
-      { index: true, Component: List },
+      { index: true, Component: HomePage },
       { path: "/add", Component: FindProduct },
     ],
   },

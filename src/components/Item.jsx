@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Item({ name, qty }) {
+function Item({ name, qty, mode = "checkList" }) {
   const [checked, setChecked] = useState(false);
 
   return (
@@ -10,16 +10,18 @@ function Item({ name, qty }) {
       }`}
     >
       <div className="p-3 flex items-center">
-        <input
-          type="checkbox"
-          className=""
-          value={checked}
-          onChange={() => setChecked((state) => !state)}
-        />
+        {mode === "checkList" ? (
+          <input
+            type="checkbox"
+            className=""
+            value={checked}
+            onChange={() => setChecked((state) => !state)}
+          />
+        ) : null}
       </div>
       <div className="flex-2 p-3">
         <p>{name}</p>
-        <p>QTY: {qty}</p>
+        {qty ? <p>QTY: {qty}</p> : null}
       </div>
       <div className="p-3">
         <img

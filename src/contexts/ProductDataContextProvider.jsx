@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ProductDataContext } from "./productDataContext";
 
 const drinksData = [
@@ -5,7 +6,7 @@ const drinksData = [
     id: 1,
     name: "Deep RiverRock Still Water 500ml",
     category: "drink",
-    barcode: "",
+    barcode: "3574661781228",
     imgUrl: "../favicon.svg",
   },
   {
@@ -158,8 +159,16 @@ const drinksData = [
 ];
 
 function ProductDataContextProvider({ children }) {
+  const [listItem, setListItem] = useState([]);
+
   return (
-    <ProductDataContext.Provider value={{ productData: drinksData }}>
+    <ProductDataContext.Provider
+      value={{
+        productData: drinksData,
+        productList: listItem,
+        setProductList: setListItem,
+      }}
+    >
       {children}
     </ProductDataContext.Provider>
   );
